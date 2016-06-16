@@ -327,6 +327,17 @@ var replaceKeysInObj = function(obj, key, newKey) {
 // fibonacci(5);  // [0, 1, 1, 2, 3, 5]
 // Note:  The 0 is not counted.
 var fibonacci = function(n) {
+	if(n <= 0) {
+		return null;
+	}
+	else if(n === 1) {
+		return [0, 1];
+	}
+	else {
+		var array = fibonacci(n - 1);
+		array.push(array[array.length - 1] + array[array.length - 2]);
+		return array;
+	}
 };
 
 // 25. Return the Fibonacci number located at index n of the Fibonacci sequence.
