@@ -149,6 +149,16 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+	var newString = string.toLowerCase();
+	if(newString.length <= 1 || newString === '' || newString.charAt(0).toLowerCase() === newString.charAt(0).toUpperCase()) {
+		return true;
+	}
+	else if(newString.charAt(0) !== newString.charAt(newString.length - 1)) {
+		return false;
+	}
+	else {
+		return palindrome(newString.substr(1, newString.length - 2))
+	}
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -427,6 +437,18 @@ var capitalizeFirst = function(array) {
 // };
 // nestedEvenSum(obj1); // 10
 var nestedEvenSum = function(obj) {
+	var total = 0;
+
+	for(var property in obj) {
+		if((obj[property])/2 === 0) {
+			total += obj[property];
+		}
+		var value = obj[property];
+		if(typeof value === 'object') {
+			total += nestedEvenSum(value);
+		}
+	}
+	return total;
 };
 
 // 29. Flatten an array containing nested arrays.
